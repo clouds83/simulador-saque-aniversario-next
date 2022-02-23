@@ -10,7 +10,7 @@ const Home: React.FC = () => {
     <Container>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Simular Saque-Aniversário FGTS wow</title>
+        <title>Simular Saque-Aniversário FGTS</title>
       </Head>
       <Header />
       <Form />
