@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useData } from '../context/DataContext'
 
 const Form: React.FC = () => {
 
@@ -53,7 +54,7 @@ const Form: React.FC = () => {
     },
   ]
 
-  const [birthMonth, setBirthMonth] = useState('1')
+  const { birthMonth, saldo, parcela, setBirthMonth, setSaldo, setParcela } = useData();
 
   return (
     <main className="container">
@@ -61,42 +62,59 @@ const Form: React.FC = () => {
         <form>
           <div className="flex-row">
             <div className="flex-column">
+
               <label htmlFor="aniversarioData">Mês de seu aniversário*</label>
-              
+
               <select
-              value={birthMonth}
-              onChange={(e) => {
-                const selectedMonth = e.target.value
-                setBirthMonth(selectedMonth)
-              }}>
-                {birthMonthList.map((month) =>(
+                id="aniversarioData"
+                name="aniversarioData"
+                value={birthMonth}
+                onChange={(e) => {
+                  const selectedMonth = e.target.value
+                  setBirthMonth(selectedMonth)
+                }}>
+                {birthMonthList.map((month) => (
                   <option value={month.value}>{month.label}</option>
                 ))}
               </select>
-              
-              {/* <input
-                type="date"
-                id="aniversarioData"
-                name="aniversarioData"
-              ></input> */}
+
+              {birthMonth}
 
             </div>
             <div className="flex-column"></div>
           </div>
           <div className="flex-row">
             <div className="flex-column">
+
               <label htmlFor="saldoFgts">Saldo atual do seu FGTS*</label>
-              <input type="number" id="saldoFgts" name="saldoFgts"></input>
+
+              <input
+                type="number"
+                id="saldoFgts"
+                name="saldoFgts"
+                value={saldo}
+                onChange={event => setSaldo(event.target.value)}
+              />
+
+              {saldo}
+
             </div>
             <div className="flex-column">
+
               <label htmlFor="depositoMensal">
                 Valor depositado mensalmente
               </label>
+
               <input
                 type="number"
                 id="depositoMensal"
                 name="depositoMensal"
-              ></input>
+                value={parcela}
+                onChange={event => setParcela(event.target.value)}
+              />
+
+              {parcela}
+
             </div>
           </div>
           <button type="submit">Calcular</button>
