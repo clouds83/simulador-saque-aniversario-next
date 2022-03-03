@@ -1,7 +1,7 @@
 # Simulador Saque Aniversario FGTS v0.9b
 Web app criado com a intenção de facilitar para trabalhadores sob o regime CLT ter uma previsão bem próxima da quantia que receberão no seu próximo saque aniversário.
 
-Desenvolvi tudo do zero, sozinho. Idéia de app, layout e desenvolvimento.
+Desenvolvi tudo do zero, idéia de app, layout e desenvolvimento.
 
 Criado usando Next JS, TypeScript e Styled Components.
 
