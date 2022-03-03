@@ -1,21 +1,21 @@
 import { createContext, ReactNode, useContext, useState } from 'react'
 
 type dataContextType = {
-    birthMonth: string;
-    saldo: string;
-    parcela: string;
+    birthMonth: number;
+    balance: number;
+    installment: number;
     setBirthMonth: any;
-    setSaldo: any;
-    setParcela: any;
+    setBalance: any;
+    setInstallment: any;
 }
 
 const dataContextDefault: dataContextType = {
-    birthMonth: '1',
-    saldo: '0',
-    parcela: '0',
+    birthMonth: 1,
+    balance: 0,
+    installment: 0,
     setBirthMonth: () => {},
-    setSaldo: () => {},
-    setParcela: () => {},
+    setBalance: () => {},
+    setInstallment: () => {},
 }
 
 const DataContext = createContext<dataContextType>(dataContextDefault);
@@ -30,11 +30,11 @@ type ProviderProps = {
 
 export function DataProvider ({ children }: ProviderProps) {
     
-    const [birthMonth, setBirthMonth] = useState(1)
-    const [saldo, setSaldo] = useState(0)
-    const [parcela, setParcela] = useState(0)
+    let [birthMonth, setBirthMonth] = useState(1)
+    const [balance, setBalance] = useState(0)
+    const [installment, setInstallment] = useState(0)
 
-    const value = { birthMonth, saldo, parcela, setBirthMonth, setSaldo, setParcela }
+    const value = { birthMonth, balance , installment, setBirthMonth, setBalance, setInstallment }
 
     return <DataContext.Provider value= {value} >{ children }</DataContext.Provider>
 

@@ -7,6 +7,10 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
+  a {
+    text-decoration: none;
+  }
+
   html, body {
     height: 100%;
   }
@@ -33,12 +37,12 @@ export default createGlobalStyle`
   body,
   input,
   textarea,
-  button {
+  .button {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
   }
 
-  button {
+  .button {
     cursor: pointer;
   }
 
@@ -51,8 +55,6 @@ export default createGlobalStyle`
     width: 12rem;
   }
 }
-
-xxx
 
 .frame1,
 #root {
@@ -80,6 +82,14 @@ xxx
   margin-bottom: 2.5rem;
 }
 
+.table-row {
+  display: table-row;
+}
+
+.table-cell {
+  display: table-cell;
+}
+
 .content {
   display: flex;
   flex-direction: column;
@@ -87,7 +97,7 @@ xxx
   margin: auto;
 
   label {
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     color: ${props => props.theme.colors.darkText};
   }
 }
@@ -136,7 +146,9 @@ h6 {
   color: ${props => props.theme.colors.darkText};
 }
 
-button {
+
+
+.button {
   cursor: pointer;
   background: ${props => props.theme.colors.accent};
   border-radius: 999px;
@@ -156,9 +168,11 @@ button {
   -moz-transition: filter 0.5s, box-shadow 0.5s, padding 0.5s, font-size 0.5s;
   -o-transition: filter 0.5s, box-shadow 0.5s, padding 0.5s, font-size 0.5s;
   transition: filter 0.5s, box-shadow 0.5s, padding 0.5s, font-size 0.5s;
-  position: relative;
-  display: block;
   margin: 0 auto;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  width: 100%;
 
   &:hover {
     filter: brightness(1.1);
@@ -186,22 +200,20 @@ button {
   flex-direction: row;
 }
 
-input {
+input, select {
   height: 4.5rem;
   border-radius: 0.5rem;
   -webkit-border-radius: 0.5rem;
   -moz-border-radius: 0.5rem;
   border: 2px solid ${props => props.theme.colors.borderColor};
   padding: 0.75rem 1rem;
+  font-size: 1.5rem;
+  background: white;
 
   &:focus {
     outline: none !important;
     border: 2px solid ${props => props.theme.colors.primary};
   }
-}
-
-form button {
-  margin-bottom: 1rem;
 }
 
 .txt-center {
@@ -230,6 +242,7 @@ form button {
 .table-title {
   flex-grow: 3;
   justify-content: center;
+  padding-right: 2rem;
 
   h2 {
     font-size: 1.75rem;
@@ -238,22 +251,21 @@ form button {
 }
 
 .table-results {
-  flex-grow: 5;
   border: 1px solid ${props => props.theme.colors.borderColor};
   border-radius: 1rem;
   -webkit-border-radius: 1rem;
   -moz-border-radius: 1rem;
 
+  .results-line {
+    white-space: nowrap;
+  }
+
   .flex-row {
     margin-bottom: 0;
     align-items: center;
-  }
-
-  p {
     height: 5rem;
-    padding: 0 0 0 1.75rem;
-    align-items: center;
-    display: flex;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 
   span {
@@ -265,5 +277,166 @@ form button {
   .middle-result {
     background-color: ${props => props.theme.colors.lightBg};
   }
+}
+
+.mb1 { margin-bottom: 1rem; }
+
+@media (max-height: 720px) {
+
+  .fgts-after, .big-mb {
+    margin-bottom: 2rem;
+  }
+
+  header {
+    margin-bottom: 2rem;
+
+    h1 {
+    font-size: 1.75rem;
+    }
+
+    img {
+      width: 12rem;
+    }
+
+  }
+
+  .table-results {
+
+    span {
+      font-size: 1.5rem;
+    }
+
+    .flex-row {
+      height: 4rem;
+    }
+
+  }
+
+  .button, .button:hover {
+    height: 4rem;
+    font-size: 1.5rem;
+  }
+
+  .table-title h2, .fgts-after h3 {
+    font-size: 1.25rem;
+  }
+
+}
+
+@media (orientation: portrait) and (max-height: 916px) {
+
+  * {
+    text-align: center;
+  }
+  
+  header {
+    h1 {
+      font-size: 1.25rem;
+    }
+
+    img {
+      width: 8rem;
+    }
+  }
+
+  .flex-row {
+    -webkit-column-gap: 0;
+    column-gap: 0;
+    margin-bottom: 0;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+
+    .flex-column {
+      width: auto;
+    }
+
+    .flex-column:last-child {
+      margin-top: 1.5rem;
+    }
+  }
+  
+  input, select, .button, .button:hover {
+    height: 3.5rem;
+    font-size: 1.25rem;
+  }
+
+  .table-row {
+    display: grid;
+  }
+
+  .table-results {
+    margin-top: 1.5rem;
+
+    .results-line {
+      white-space: initial;
+    }
+
+    .flex-row {
+      justify-content: center;
+    }
+  }
+
+  .results-line span, .table-row h2 span, .fgts-after h3 span {
+    display: block;
+  }
+
+  .table-title {
+    padding-right: 0;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  header, .fgts-after, .big-mb {
+    margin-bottom: 1.5rem;
+  }
+
+  .button, .button:hover {
+    padding: 0;
+  }
+
+  .table-title h2, .fgts-after h3 {
+    font-size: 1.25rem;
+  }
+
+}
+
+@media (orientation: portrait) and (max-width: 281px) {
+  .table-results {
+    span {
+      font-size: 1.25rem;
+    }
+
+    .flex-row {
+      height: 3rem;
+    }
+  }
+
+  header {
+    h1 {
+      padding: 0 0.5rem;
+      margin-right: 0.5rem;
+    }
+
+    img {
+      width: 7rem;
+    } 
+  }
+
+  .table-title h2, .fgts-after h3, header h1 {
+    font-size: 1rem;
+  }
+
+  .table-results, .table-title p, .fgts-after p {
+    font-size: 0.75rem;
+  }
+
+  input, select, .button, .button:hover {
+    height: 3rem;
+    font-size: 1rem;
+  }
+}
+  
 }
 `
